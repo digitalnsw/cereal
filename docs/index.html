@@ -1,17 +1,152 @@
-
-<!DOCTYPE HTML>
-
-<html>
-
+<!DOCTYPE html>
+<!--[if lt IE 8]>
+	<html class="no-js lt-ie8 lt-ie9" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+	<html class="no-js lt-ie9 ie8" lang="en">
+<![endif]-->
+<!--[if IE 9 ]>
+	<html class="no-js ie9" lang="en">
+<![endif]-->
+<!--[if !(IE)]><!-->
+	<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Cereal!</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>{% if site.browserTitle %}{{site.browserTitle}}{% else %}{% if page.breadcrumb %}{{ page.breadcrumb }} |{% endif %}{{site.title}} | NSW Government{% endif %}</title>
+	<script type="text/javascript">
+		var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
+	</script>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+	<link rel="icon" href="{{site.baseurl}}/assets/favicons/favicon.ico">
+	<link type="text/css" rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
 </head>
+<!-- BODY -->
+<!-- GRID-12 -->
+<body class="au-grid">
+	<!-- SKIP-LINKS -->
+	<nav class="au-skip-link">
+		<a class="au-skip-link__link" href="#content">Skip to main content</a>
+		<a class="au-skip-link__link" href="#mainmenu">Skip to main navigation</a>
+	</nav>
+	<!-- HEADER -->
+	<header class="au-header au-header--dark" role="banner">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<a class="au-header__brand" href="{{site.baseurl}}/">
+						<img class="au-header__brand-image" alt="NSW Government" src="{{site.baseurl}}/assets/img/nsw_white.png" width="90">
+						<div class="au-header__text">
+						<h2 class="au-header__heading">{{ site.title }}{% if site.stage %}<span class="header__badge">{{site.stage}}</span>{% endif %}</h2>
+						<div class="au-header__subline">{{ site.description }}</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</header>
+{% if site.data.navs.mainnav[0] %}
+	<!-- MAIN NAVIGATION -->
+	<nav class="au-main-nav au-main-nav--dark" id="mainmenu" aria-label="main navigation">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="au-main-nav__content" id="main-nav-default-dark">
+						<button
+							aria-controls="main-nav-default-dark"
+							class="au-main-nav__toggle au-main-nav__toggle--open"
+							onClick="return AU.mainNav.Toggle( this )">
+							Menu
+						</button>
 
-<body>
+						<div class="au-main-nav__menu">
+							<div class="au-main-nav__menu-inner">
+								<div class="au-main-nav__focus-trap-top"></div>
+								<button
+									aria-controls="main-nav-default-dark"
+									class="au-main-nav__toggle au-main-nav__toggle--close"
+									onClick="return AU.mainNav.Toggle( this )">
+									Close
+								</button>
+								<ul class="au-link-list">
+                    {% for item in site.data.navs.mainnav[0].items %}
+  									   <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.page }}</a></li>
+                    {% endfor %}
+								</ul>
+								<div class="au-main-nav__focus-trap-bottom"></div>
+							</div>
+						</div>
+						<div class="au-main-nav__overlay" aria-controls="main-nav-default-dark" onClick="return AU.mainNav.Toggle( this )"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+{% endif %}
+<!-- MAIN BODY -->
 
-  <h1>Testing</h1>
-
+<main>
+		<!--CONTENT-->
+    <section class="au-body">
+			<div class="container-fluid">
+				<div class="row">
+            <div class="col-sm-12" id="content">
+  						<nav class="au-breadcrumbs" aria-label="breadcrumb">
+  							<ul class="au-link-list au-link-list--inline">
+                  <li><a href="{{ site.baseurl }}/">{{ site.title }}</a></li>
+                  {% capture page_url_without_index_html %}{{ page.url | remove: "/index.html" }}{% endcapture %}
+                  {% assign splitted_url_parts = page_url_without_index_html | split: '/' %}
+                  {% capture forLoopMaxInt %}{{ splitted_url_parts.size | minus:1 }}{% endcapture %}
+                  {% for i in (1..forLoopMaxInt) %}
+                      {% capture current_breadcrumb_url %}{{next_prepender}}/{{ splitted_url_parts[i] }}/index.html{% endcapture %}
+                      {% capture current_breadcrumb_md_url %}{{next_prepender}}/{{ splitted_url_parts[i] }}/{% endcapture %}
+                      {% capture next_prepender %}{{next_prepender}}/{{ splitted_url_parts[i] }}{% endcapture %}
+                      {% for breadcrumb_page in site.pages %}
+                          {% if current_breadcrumb_url == breadcrumb_page.url or current_breadcrumb_md_url == breadcrumb_page.url  %}
+                          {% assign j = forLoopMaxInt | plus: 0 %}
+                              <li {% if i == j %}class="active"{% endif %}>
+                                  {% capture breadcrumb_page_page_url_without_index_html %}{{ breadcrumb_page.url | remove: "index.html" }}{% endcapture %}
+                                  <a href="{{ site.baseurl }}{{breadcrumb_page_page_url_without_index_html}}">{{breadcrumb_page.breadcrumb}}</a>
+                              </li>
+                          {% endif %}
+                      {% endfor %}
+                  {% endfor %}
+              </ul>
+            </nav>
+            {{ content }}
+          </div>
+				</div>
+			</div>
+		</section>
+</main>	
+	
+<!-- END MAIN BODY -->
+<!--FOOTER -->
+<footer class="au-footer au-footer--dark au-body au-body--dark" role="contentinfo">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-12">
+        <ul class="au-link-list au-link-list--inline">
+          {% if site.data.navs.bottomnav[0] %}
+            {% for item in site.data.navs.bottomnav[0].items %}
+                <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.page }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </nav>
+      <section class="col-sm-12">
+        <div class="au-footer__end">
+          <p>
+            © NSW Government. Licensed under the <a href="https://github.com/govau/uikit-starter/blob/master/LICENSE" rel="external">MIT license</a>
+          </p>
+        </div>
+      </section>
+    </div>
+</footer>
+<script type="text/javascript" src="{{site.baseurl}}/assets/script.min.js"></script>
 </body>
-
 </html>

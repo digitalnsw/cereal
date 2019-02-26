@@ -14,7 +14,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>{% if site.browserTitle %}{{site.browserTitle}}{% else %}{% if page.breadcrumb %}{{ page.breadcrumb }} |{% endif %}{{site.title}} | NSW Government{% endif %}</title>
+	<title>Cost of Living &amp; Rules as Code demo</title>
 	<script type="text/javascript">
 		var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
 	</script>
@@ -22,8 +22,8 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
-	<link rel="icon" href="{{site.baseurl}}/assets/favicons/favicon.ico">
-	<link type="text/css" rel="stylesheet" href="{{site.baseurl}}/assets/css/main.css">
+	<link rel="icon" href="assets/favicons/favicon.ico">
+	<link type="text/css" rel="stylesheet" href="assets/css/main.css">
 </head>
 <!-- BODY -->
 <!-- GRID-12 -->
@@ -38,56 +38,17 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
-					<a class="au-header__brand" href="{{site.baseurl}}/">
-						<img class="au-header__brand-image" alt="NSW Government" src="{{site.baseurl}}/assets/img/nsw_white.png" width="90">
+					<a class="au-header__brand" href="#">
+						<img class="au-header__brand-image" alt="NSW Government" src="assets/img/nsw_white.png" width="90">
 						<div class="au-header__text">
-						<h2 class="au-header__heading">{{ site.title }}{% if site.stage %}<span class="header__badge">{{site.stage}}</span>{% endif %}</h2>
-						<div class="au-header__subline">{{ site.description }}</div>
+							<h2 class="au-header__heading">Cost of Living<span class="header__badge">demo</span></h2>
+							<div class="au-header__subline">A demonstration of codified rules for Active Kids and Creative Kids</div>
 						</div>
 					</a>
 				</div>
 			</div>
 		</div>
 	</header>
-{% if site.data.navs.mainnav[0] %}
-	<!-- MAIN NAVIGATION -->
-	<nav class="au-main-nav au-main-nav--dark" id="mainmenu" aria-label="main navigation">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="au-main-nav__content" id="main-nav-default-dark">
-						<button
-							aria-controls="main-nav-default-dark"
-							class="au-main-nav__toggle au-main-nav__toggle--open"
-							onClick="return AU.mainNav.Toggle( this )">
-							Menu
-						</button>
-
-						<div class="au-main-nav__menu">
-							<div class="au-main-nav__menu-inner">
-								<div class="au-main-nav__focus-trap-top"></div>
-								<button
-									aria-controls="main-nav-default-dark"
-									class="au-main-nav__toggle au-main-nav__toggle--close"
-									onClick="return AU.mainNav.Toggle( this )">
-									Close
-								</button>
-								<ul class="au-link-list">
-                    {% for item in site.data.navs.mainnav[0].items %}
-  									   <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.page }}</a></li>
-                    {% endfor %}
-								</ul>
-								<div class="au-main-nav__focus-trap-bottom"></div>
-							</div>
-						</div>
-						<div class="au-main-nav__overlay" aria-controls="main-nav-default-dark" onClick="return AU.mainNav.Toggle( this )"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
-{% endif %}
-<!-- MAIN BODY -->
 
 <main>
 		<!--CONTENT-->
@@ -95,49 +56,21 @@
 			<div class="container-fluid">
 				<div class="row">
             <div class="col-sm-12" id="content">
-  						<nav class="au-breadcrumbs" aria-label="breadcrumb">
-  							<ul class="au-link-list au-link-list--inline">
-                  <li><a href="{{ site.baseurl }}/">{{ site.title }}</a></li>
-                  {% capture page_url_without_index_html %}{{ page.url | remove: "/index.html" }}{% endcapture %}
-                  {% assign splitted_url_parts = page_url_without_index_html | split: '/' %}
-                  {% capture forLoopMaxInt %}{{ splitted_url_parts.size | minus:1 }}{% endcapture %}
-                  {% for i in (1..forLoopMaxInt) %}
-                      {% capture current_breadcrumb_url %}{{next_prepender}}/{{ splitted_url_parts[i] }}/index.html{% endcapture %}
-                      {% capture current_breadcrumb_md_url %}{{next_prepender}}/{{ splitted_url_parts[i] }}/{% endcapture %}
-                      {% capture next_prepender %}{{next_prepender}}/{{ splitted_url_parts[i] }}{% endcapture %}
-                      {% for breadcrumb_page in site.pages %}
-                          {% if current_breadcrumb_url == breadcrumb_page.url or current_breadcrumb_md_url == breadcrumb_page.url  %}
-                          {% assign j = forLoopMaxInt | plus: 0 %}
-                              <li {% if i == j %}class="active"{% endif %}>
-                                  {% capture breadcrumb_page_page_url_without_index_html %}{{ breadcrumb_page.url | remove: "index.html" }}{% endcapture %}
-                                  <a href="{{ site.baseurl }}{{breadcrumb_page_page_url_without_index_html}}">{{breadcrumb_page.breadcrumb}}</a>
-                              </li>
-                          {% endif %}
-                      {% endfor %}
-                  {% endfor %}
-              </ul>
-            </nav>
-            {{ content }}
+            <h1>Help paying for creative and sports activities</h1>
+						<p>Children living in NSW can get a $100 voucher to help pay for creative and sports activities.</p>
+						<h3>Find out if you're entitled</h3>
+						<p>Questions go here</p>
           </div>
 				</div>
 			</div>
 		</section>
-</main>	
-	
+</main>
+
 <!-- END MAIN BODY -->
 <!--FOOTER -->
 <footer class="au-footer au-footer--dark au-body au-body--dark" role="contentinfo">
   <div class="container-fluid">
     <div class="row">
-      <nav class="col-md-12">
-        <ul class="au-link-list au-link-list--inline">
-          {% if site.data.navs.bottomnav[0] %}
-            {% for item in site.data.navs.bottomnav[0].items %}
-                <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.page }}</a></li>
-            {% endfor %}
-          {% endif %}
-        </ul>
-      </nav>
       <section class="col-sm-12">
         <div class="au-footer__end">
           <p>

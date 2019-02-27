@@ -9,6 +9,7 @@ $( document ).ready(function() {
   $("button").click(function(){
 
     var is_guardian = ($("input[name='applicantRelationship']:checked").val()=='yes');
+    var is_enrolled_in_school = ($("input[name='childEducation']:checked").val()=='yes');
     var child_has_medicare = $('#child_has_medicare-0').is(':checked');
 
     var data = {
@@ -21,7 +22,7 @@ $( document ).ready(function() {
         },
         "child1": {
             "is_nsw_resident": {"2019-02": true},
-            "is_enrolled_in_school": {"2019-02": true},
+            "is_enrolled_in_school": {"2019-02": is_enrolled_in_school},
             "birth": {"ETERNITY": "2014-01-01"},
             "active_kids__child_meets_criteria": {"2019-02": null},
             "active_kids__voucher_amount": {"2019-02": "100"},

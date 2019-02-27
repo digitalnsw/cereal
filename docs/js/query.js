@@ -11,7 +11,6 @@ $( document ).ready(function() {
     var is_guardian = ($("input[name='applicantRelationship']:checked").val()=='yes');
     var child_has_medicare = $('#child_has_medicare-0').is(':checked');
 
-    console.log($("input[name='applicantRelationship']:checked").val())
     var data = {
       "persons": {
          "parent1":{
@@ -38,7 +37,7 @@ $( document ).ready(function() {
     
     };
 
-
+    $('#result').hide();
     $("#request").text(JSON.stringify(data, null, '\t'));
     
     $('#response').text('Fetching....');
@@ -50,6 +49,14 @@ $( document ).ready(function() {
       contentType: 'application/json',
       success: function(result){
         $("#response").text(JSON.stringify(result, null, '\t'));
+        var eligible = result['persons']['parent1']['active_kids__is_eligible']['2019-02'];
+        if (eligible) {
+          $('#result_title').text('You are eligible for 1 or more vouchers');
+        }
+        else {
+          $('#result_title').text("Sorry, you are not eligible for vouchers");
+        }
+        $('#result').show();
     }});
   });
 });

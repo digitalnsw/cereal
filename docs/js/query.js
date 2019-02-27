@@ -9,9 +9,13 @@ $( document ).ready(function() {
     });
   } );
 
+  $('#debug').hide();
 
+  $('#show_debug').click(function(){
+    $('#debug').toggle();
+  });
 
-  $("button").click(function(){
+  $("#run_query").click(function(){
 
     var is_guardian = ($("input[name='applicantRelationship']:checked").val()=='yes');
     var is_enrolled_in_school = ($("input[name='childEducation']:checked").val()=='yes');

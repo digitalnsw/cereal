@@ -38,7 +38,7 @@ $( document ).ready(function() {
     
     };
 
-
+    $('#result').hide();
     $("#request").text(JSON.stringify(data, null, '\t'));
     
     $('#response').text('Fetching....');
@@ -50,6 +50,14 @@ $( document ).ready(function() {
       contentType: 'application/json',
       success: function(result){
         $("#response").text(JSON.stringify(result, null, '\t'));
+        var eligible = result['persons']['parent1']['active_kids__is_eligible']['2019-02'];
+        if (eligible) {
+          $('#result_title').text('You are eligible for 1 or more vouchers');
+        }
+        else {
+          $('#result_title').text("Based on what you've told us, you're not eligible for vouchers this year.");
+        }
+        $('#result').show();
     }});
   });
 });

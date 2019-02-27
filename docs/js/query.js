@@ -94,5 +94,5 @@ openfisca_this_month = function() {
     str = str.toString();
     return str.length < max ? pad("0" + str, max) : str;
   }
-  return  new Date().getFullYear() + '-' + pad(new Date().getMonth(), 2);
+  return  new Date().getFullYear() + '-' + pad(new Date().getMonth() +1, 2);
 }

@@ -16,47 +16,11 @@ $( document ).ready(function() {
   });
 
   $("#run_query").click(function(){
+    var data = request_data();
 
-    var is_guardian = ($("input[name='applicantRelationship']:checked").val()=='yes');
-    var is_enrolled_in_school = ($("input[name='childEducation']:checked").val()=='yes');
-    var is_nsw_resident = ($("input[name='childResidence']:checked").val()=='yes');
-    var active_kids__already_issued_in_calendar_year = $('#first_voucher-0').is(':checked');
-    var child_has_medicare = $('#child_has_medicare-0').is(':checked');
-    var birth = $( "#datepicker" ).datepicker().val();
-     
-
-
-    var data = {
-      "persons": {
-         "parent1":{
-            "is_guardian": {
-                "2019-02": is_guardian
-            },
-            "active_kids__is_eligible": {"2019-02": null}
-        },
-        "child1": {
-            "is_nsw_resident": {"2019-02": is_nsw_resident},
-            "is_enrolled_in_school": {"2019-02": is_enrolled_in_school},
-            "birth": {"ETERNITY": birth},
-            "active_kids__child_meets_criteria": {"2019-02": null},
-            "active_kids__voucher_amount": {"2019-02": null},
-            "has_valid_medicare_card": {"2019-02": child_has_medicare},
-            "active_kids__already_issued_in_calendar_year": {"2019-02": active_kids__already_issued_in_calendar_year}
-        }
-      },
-      "families": {
-          "family1": {
-              "parents": ["parent1"],
-              "children": ["child1"]
-          }
-      }
+    // $("#request").text(JSON.stringify(data, null, '\t'));
     
-    };
-
-    $('#result').hide();
-    $("#request").text(JSON.stringify(data, null, '\t'));
-    
-    $('#response').text('Fetching....');
+    $('#response,#result_title').text('Asking Rules as Code to calculate....');
 
     $.ajax({
       url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
@@ -76,3 +40,59 @@ $( document ).ready(function() {
     }});
   });
 });
+
+request_data = function() {
+  var request_data = {
+      "persons": {
+         "parent1":{
+            "is_guardian": {},
+            "active_kids__is_eligible": {}
+        },
+        "child1": {
+            "is_nsw_resident": {},
+            "is_enrolled_in_school": {},
+            "birth": {},
+            "age": {},
+            "active_kids__child_meets_criteria": {},
+            "active_kids__voucher_amount": {},
+            "has_valid_medicare_card": {},
+            "active_kids__already_issued_in_calendar_year": {}
+          }
+      },
+      "families": {
+          "family1": {
+              "parents": ["parent1"],
+              "children": ["child1"]
+          }
+      }
+    
+  }
+
+  var query_date = openfisca_this_month();
+  var parent1 = request_data.persons.parent1;
+  var child1 = request_data.persons.child1;
+
+  // Our input:
+  parent1.is_guardian[query_date] = ($("input[name='applicantRelationship']:checked").val()=='yes');
+  child1.birth.ETERNITY = $( "#datepicker" ).datepicker().val();
+  child1.is_nsw_resident[query_date] = ($("input[name='childResidence']:checked").val()=='yes');
+  child1.is_enrolled_in_school[query_date] = ($("input[name='childEducation']:checked").val()=='yes');
+  child1.has_valid_medicare_card[query_date] = $('#child_has_medicare-0').is(':checked');
+  child1.active_kids__already_issued_in_calendar_year[query_date] = $('#first_voucher-0').is(':checked');
+  
+  // The output we want from Open Fisca
+  parent1.active_kids__is_eligible[query_date] = null;
+  child1.age[query_date] = null;
+  child1.active_kids__child_meets_criteria[query_date] = null;
+  child1.active_kids__voucher_amount[query_date] = null;
+
+  return request_data;
+}
+
+openfisca_this_month = function() {
+  function pad (str, max) {
+    str = str.toString();
+    return str.length < max ? pad("0" + str, max) : str;
+  }
+  return  new Date().getFullYear() + '-' + pad(new Date().getMonth(), 2);
+}

@@ -6,3 +6,4 @@ This app queries the experimental NSW "Rules as Code" calculation engine (Open F
 
 This app is built using JQuery.
 
+[Demo](https://digitalnsw.github.io/cereal/)

@@ -68,23 +68,25 @@ request_data = function() {
     
   }
 
-  var query_date = openfisca_this_month();
+  var query_month = openfisca_this_month();
+  var query_year = openfisca_this_year();
   var parent1 = request_data.persons.parent1;
   var child1 = request_data.persons.child1;
 
   // Our input:
-  parent1.is_guardian[query_date] = ($("input[name='applicantRelationship']:checked").val()=='yes');
+  parent1.is_guardian[query_month] = ($("input[name='applicantRelationship']:checked").val()=='yes');
   child1.birth.ETERNITY = $( "#datepicker" ).datepicker().val();
-  child1.is_nsw_resident[query_date] = ($("input[name='childResidence']:checked").val()=='yes');
-  child1.is_enrolled_in_school[query_date] = ($("input[name='childEducation']:checked").val()=='yes');
-  child1.has_valid_medicare_card[query_date] = $('#child_has_medicare-0').is(':checked');
-  child1.active_kids__already_issued_in_calendar_year[query_date] = $('#first_voucher-0').is(':checked');
+  child1.is_nsw_resident[query_month] = ($("input[name='childResidence']:checked").val()=='yes');
+  child1.is_enrolled_in_school[query_month] = ($("input[name='childEducation']:checked").val()=='yes');
+  child1.has_valid_medicare_card[query_month] = $('#child_has_medicare-0').is(':checked');
+  // (note this variable is set for the whole year)
+  child1.active_kids__already_issued_in_calendar_year[query_year] = $('#first_voucher-0').is(':checked');
   
   // The output we want from Open Fisca
-  parent1.active_kids__is_eligible[query_date] = null;
-  child1.age[query_date] = null;
-  child1.active_kids__child_meets_criteria[query_date] = null;
-  child1.active_kids__voucher_amount[query_date] = null;
+  parent1.active_kids__is_eligible[query_month] = null;
+  child1.age[query_month] = null;
+  child1.active_kids__child_meets_criteria[query_month] = null;
+  child1.active_kids__voucher_amount[query_month] = null;
 
   return request_data;
 }
@@ -94,5 +96,9 @@ openfisca_this_month = function() {
     str = str.toString();
     return str.length < max ? pad("0" + str, max) : str;
   }
-  return  new Date().getFullYear() + '-' + pad(new Date().getMonth() +1, 2);
+  return  openfisca_this_year() + '-' + pad(new Date().getMonth() +1, 2);
+}
+
+openfisca_this_year = function() {
+  return new Date().getFullYear();
 }

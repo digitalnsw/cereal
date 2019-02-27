@@ -1,4 +1,4 @@
-## Cereal
+## Cereal - NSW Rules as Code demo app
 
 [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://digitalnsw.github.io/cereal/)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://digitalnsw.github.io/cereal/)

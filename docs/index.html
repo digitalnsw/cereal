@@ -13,7 +13,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="Content-Security-Policy" content="font-src; connect-src 'self' https://openfisca-nsw-staging.herokuapp.com; style-src 'self' 'unsafe-inline'; script-src https://code.jquery.com/ 'self' 'unsafe-eval' 'unsafe-inline'; default-src 'none'; img-src data: 'self'; child-src; base-uri; form-action 'self'; object-src 'none';">
+	<meta http-equiv="Content-Security-Policy" content="font-src; connect-src 'self' https://openfisca-nsw-staging.herokuapp.com; style-src https://ajax.googleapis.com/ 'self' 'unsafe-inline'; script-src https://code.jquery.com/  https://ajax.googleapis.com/ 'self' 'unsafe-eval' 'unsafe-inline'; default-src 'none'; img-src data: https://ajax.googleapis.com/ 'self'; child-src; base-uri; form-action 'self'; object-src 'none';">
 	<meta name="viewport" content="width=device-width">
 	<title>Cost of Living &amp; Rules as Code demo</title>
 	<script type="text/javascript">
@@ -22,8 +22,10 @@
 	<script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<link rel="icon" href="assets/favicons/favicon.ico">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<link type="text/css" rel="stylesheet" href="assets/css/main.css">
 </head>
 <!-- BODY -->
@@ -147,8 +149,8 @@
 						<div class="form-group">
 						  <label class="col-md-4 control-label" for="child_dob">Date of Birth</label>
 						  <div class="col-md-4">
-						  <input id="child_dob" name="child_dob" type="text" placeholder="dd/mm/yyyy" class="form-control input-md" required="">
-
+						  <!-- <input id="child_dob" name="child_dob" type="text" placeholder="dd/mm/yyyy" class="form-control input-md" required=""> -->
+							<input type="text" id="datepicker">
 						  </div>
 						</div>
 

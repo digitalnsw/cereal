@@ -32,15 +32,14 @@ $( document ).ready(function() {
   };
 
   $("button").click(function(){
+    $('#response').text('Fetching....');
     $.ajax({
       url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
       data : JSON.stringify(data),
       method: 'POST',
       contentType: 'application/json',
       success: function(result){
-      $('#response').text(result);
-        console.log(result)
-
+        $("#response").text(JSON.stringify(result, null, '\t'));
     }});
   });
 });

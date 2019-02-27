@@ -37,17 +37,17 @@ $( document ).ready(function() {
     };
 
 
-    $("#response").text(JSON.stringify(data, null, '\t'));
+    $("#request").text(JSON.stringify(data, null, '\t'));
     
-    // $('#response').text('Fetching....');
+    $('#response').text('Fetching....');
 
-    // $.ajax({
-    //   url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
-    //   data : JSON.stringify(data),
-    //   method: 'POST',
-    //   contentType: 'application/json',
-    //   success: function(result){
-    //     $("#response").text(JSON.stringify(result, null, '\t'));
-    // }});
+    $.ajax({
+      url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
+      data : JSON.stringify(data),
+      method: 'POST',
+      contentType: 'application/json',
+      success: function(result){
+        $("#response").text(JSON.stringify(result, null, '\t'));
+    }});
   });
 });

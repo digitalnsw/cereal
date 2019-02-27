@@ -8,13 +8,15 @@ $( document ).ready(function() {
 
   $("button").click(function(){
 
+    var is_guardian = ($("input[name='applicantRelationship']:checked").val()=='yes');
     var child_has_medicare = $('#child_has_medicare-0').is(':checked');
-    
+
+    console.log($("input[name='applicantRelationship']:checked").val())
     var data = {
       "persons": {
          "parent1":{
             "is_guardian": {
-                "2019-02": true
+                "2019-02": is_guardian
             },
             "active_kids__is_eligible": {"2019-02": null}
         },

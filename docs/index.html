@@ -60,7 +60,106 @@
             <h1>Help paying for creative and sports activities</h1>
 						<p>Children living in NSW can get a $100 voucher to help pay for creative and sports activities.</p>
 						<h3>Find out if you're entitled</h3>
-						<p>Questions go here</p>
+
+						<form class="form-horizontal">
+						<fieldset>
+
+						<!-- Form Name -->
+						<legend>Person applying</legend>
+
+						<!-- Multiple Checkboxes -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="applicantRelationship">Relationship type</label>
+						  <div class="col-md-4">
+						  <div class="checkbox">
+						    <label for="applicantRelationship-0">
+						      <input type="checkbox" name="applicantRelationship" id="applicantRelationship-0" value="is_parent">
+						      Parent
+						    </label>
+							</div>
+						  <div class="checkbox">
+						    <label for="applicantRelationship-1">
+						      <input type="checkbox" name="applicantRelationship" id="applicantRelationship-1" value="is_guardian">
+						      Guardian
+						    </label>
+							</div>
+						  <div class="checkbox">
+						    <label for="applicantRelationship-2">
+						      <input type="checkbox" name="applicantRelationship" id="applicantRelationship-2" value="is_carer">
+						      Carer
+						    </label>
+							</div>
+						  </div>
+						</div>
+
+						</fieldset>
+
+						<fieldset>
+
+						<!-- Form Name -->
+						<legend>Receiver of voucher</legend>
+
+						<!-- Multiple Checkboxes -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="childEducation">Education type</label>
+						  <div class="col-md-4">
+						  <div class="checkbox">
+						    <label for="childEducation-0">
+						      <input type="checkbox" name="childEducation" id="childEducation-0" value="is_enrolled_in_school">
+						      Primary
+						    </label>
+							</div>
+						  <div class="checkbox">
+						    <label for="childEducation-1">
+						      <input type="checkbox" name="childEducation" id="childEducation-1" value="is_enrolled_in_school">
+						      Secondary
+						    </label>
+							</div>
+						  <div class="checkbox">
+						    <label for="childEducation-2">
+						      <input type="checkbox" name="childEducation" id="childEducation-2" value="is_enrolled_in_school">
+						      TAFE &amp; equiv
+						    </label>
+							</div>
+						  </div>
+						</div>
+
+						<!-- Multiple Checkboxes (inline) -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="fist_voucher">Child has had a voucher this calendar year</label>
+						  <div class="col-md-4">
+						    <label class="checkbox-inline" for="fist_voucher-0">
+						      <input type="checkbox" name="fist_voucher" id="fist_voucher-0" value="yes">
+						      Yes
+						    </label>
+						  </div>
+						</div>
+
+						<!-- Multiple Checkboxes -->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="child_has_medicare">Child has medicare</label>
+						  <div class="col-md-4">
+						  <div class="checkbox">
+						    <label for="child_has_medicare-0">
+						      <input type="checkbox" name="child_has_medicare" id="child_has_medicare-0" value="True">
+						      Yes
+						    </label>
+							</div>
+						  </div>
+						</div>
+
+						<!-- Text input-->
+						<div class="form-group">
+						  <label class="col-md-4 control-label" for="child_dob">Date of Birth</label>
+						  <div class="col-md-4">
+						  <input id="child_dob" name="child_dob" type="text" placeholder="dd/mm/yyyy" class="form-control input-md" required="">
+
+						  </div>
+						</div>
+
+						</fieldset>
+						</form>
+
 						<div id='response'></div>
             <button>Run Query</button>
           </div>

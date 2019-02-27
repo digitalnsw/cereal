@@ -12,198 +12,182 @@
 	<html class="no-js" lang="en">
 <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Security-Policy" content="font-src; connect-src 'self' https://openfisca-nsw-staging.herokuapp.com; style-src https://ajax.googleapis.com/ 'self' 'unsafe-inline'; script-src https://code.jquery.com/  https://ajax.googleapis.com/ 'self' 'unsafe-eval' 'unsafe-inline'; default-src 'none'; img-src data: https://ajax.googleapis.com/ 'self'; child-src; base-uri; form-action 'self'; object-src 'none';">
-	<meta name="viewport" content="width=device-width">
-	<title>Cost of Living &amp; Rules as Code demo</title>
-	<script type="text/javascript">
-		var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
-	</script>
-	<script
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="font-src; connect-src 'self' https://openfisca-nsw-staging.herokuapp.com; style-src https://ajax.googleapis.com/ 'self' 'unsafe-inline'; script-src https://code.jquery.com/  https://ajax.googleapis.com/ 'self' 'unsafe-eval' 'unsafe-inline'; default-src 'none'; img-src data: https://ajax.googleapis.com/ 'self'; child-src; base-uri; form-action 'self'; object-src 'none';">
+  <meta name="viewport" content="width=device-width">
+  <title>Cost of Living &amp; Rules as Code demo</title>
+  <script type="text/javascript">
+    var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
+  </script>
+  <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<link rel="icon" href="assets/favicons/favicon.ico">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	<link type="text/css" rel="stylesheet" href="assets/css/main.css">
+  crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <link rel="icon" href="assets/favicons/favicon.ico">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link type="text/css" rel="stylesheet" href="assets/css/main.css">
 </head>
 <!-- BODY -->
 <!-- GRID-12 -->
 <body class="au-grid">
-	<!-- SKIP-LINKS -->
-	<nav class="au-skip-link">
-		<a class="au-skip-link__link" href="#content">Skip to main content</a>
-		<a class="au-skip-link__link" href="#mainmenu">Skip to main navigation</a>
-	</nav>
-	<!-- HEADER -->
-	<header class="au-header au-header--dark" role="banner">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12">
-					<a class="au-header__brand" href="#">
-						<img class="au-header__brand-image" alt="NSW Government" src="assets/img/nsw_white.png" width="90">
-						<div class="au-header__text">
-							<h2 class="au-header__heading">Cost of Living<span class="header__badge">demo</span></h2>
-							<div class="au-header__subline">A demonstration of codified rules for Active Kids and Creative Kids</div>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</header>
-
-<main>
-		<!--CONTENT-->
+  <!-- SKIP-LINKS -->
+  <nav class="au-skip-link">
+    <a class="au-skip-link__link" href="#content">Skip to main content</a>
+    <a class="au-skip-link__link" href="#mainmenu">Skip to main navigation</a>
+  </nav>
+  <!-- HEADER -->
+  <header class="au-header au-header--dark" role="banner">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <a class="au-header__brand" href="#">
+            <img class="au-header__brand-image" alt="NSW Government" src="assets/img/nsw_white.png" width="90">
+            <div class="au-header__text">
+              <h2 class="au-header__heading">Cost of Living<span class="header__badge">demo</span></h2>
+              <div class="au-header__subline">A demonstration of codified rules for Active Kids and Creative Kids</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!--CONTENT-->
     <section class="au-body">
-			<div class="container-fluid">
-				<div class="row">
-            <div class="col-sm-12" id="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12" id="content">
             <h1>Help paying for creative and sports activities</h1>
-						<p>Children living in NSW can get a $100 voucher to help pay for creative and sports activities.</p>
-						<h3>Find out if you're entitled</h3>
-
-						<form class="form-horizontal">
-						<fieldset>
-
-						<!-- Form Name -->
-						<legend>Person applying</legend>
-
-						<!-- Radio buttons -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="applicantRelationship">Are you a parent, guardian, or carer</label>
-						  <div class="col-md-4">
-						  <div class="checkbox">
-						    <label for="applicantRelationship-0">
-						      <input type="radio" name="applicantRelationship" id="applicantRelationship-0" value="yes">
-						      Yes
-						    </label>
-							</div>
-						  <div class="checkbox">
-						    <label for="applicantRelationship-1">
-						      <input type="radio" name="applicantRelationship" id="applicantRelationship-1" value="no">
-						      No
-						    </label>
-							</div>
-						  
-						  </div>
-						</div>
-
-						</fieldset>
-
-						<fieldset>
-
-						<!-- Form Name -->
-						<legend>Child</legend>
-
-						<!-- Radio buttons -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="childEducation">Is the child enrolled in school?</label>
-						  <div class="col-md-4">
-						  <div class="checkbox">
-						    <label for="childEducation-0">
-						      <input type="radio" name="childEducation" id="childEducation-0" value="yes">
-						      Yes
-						    </label>
-							</div>
-						  <div class="checkbox">
-						    <label for="childEducation-1">
-						      <input type="radio" name="childEducation" id="childEducation-1" value="no">
-						      No
-						    </label>
-							</div>
-						  
-						  </div>
-						</div>
-
-
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="childResidence">Does the child live in NSW?</label>
-						  <div class="col-md-4">
-						  <div class="checkbox">
-						    <label for="childResidence-0">
-						      <input type="radio" name="childResidence" id="childResidence-0" value="yes">
-						      Yes
-						    </label>
-							</div>
-						  <div class="checkbox">
-						    <label for="childResidence-1">
-						      <input type="radio" name="childResidence" id="childResidence-1" value="no">
-						      No
-						    </label>
-							</div>
-						  
-						  </div>
-						</div>
-
-
-						<!-- Multiple Checkboxes (inline) -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="first_voucher">Child has had a voucher this calendar year</label>
-						  <div class="col-md-4">
-						    <label class="checkbox-inline" for="fist_voucher-0">
-						      <input type="checkbox" name="first_voucher" id="first_voucher-0" value="yes">
-						      Yes
-						    </label>
-						  </div>
-						</div>
-
-						<!-- Multiple Checkboxes -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="child_has_medicare">Child has medicare</label>
-						  <div class="col-md-4">
-						  <div class="checkbox">
-						    <label for="child_has_medicare-0">
-						      <input type="checkbox" name="child_has_medicare" id="child_has_medicare-0" value="True">
-						      Yes
-						    </label>
-							</div>
-						  </div>
-						</div>
-
-						<!-- Text input-->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="child_dob">Date of Birth</label>
-						  <div class="col-md-4">
-						  <!-- <input id="child_dob" name="child_dob" type="text" placeholder="dd/mm/yyyy" class="form-control input-md" required=""> -->
-							<input type="text" id="datepicker">
-						  </div>
-						</div>
-
-						</fieldset>
-						</form>
-
-            <button id="run_query" class="au-btn">Run Query</button>
+            <p>Children living in NSW can get a $100 voucher to help pay for creative and sports activities.</p>
+            <h3>Find out if you're entitled</h3>
+            <form class="form-horizontal">
+              <fieldset>
+                <!-- Form Name -->
+                <legend>Person applying</legend>
+                <!-- Radio buttons -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="applicantRelationship">Are you a parent, guardian, or carer</label>
+                  <div class="col-md-4">
+                    <div class="checkbox">
+                      <label for="applicantRelationship-0">
+                        <input type="radio" name="applicantRelationship" id="applicantRelationship-0" value="yes">
+                        Yes
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label for="applicantRelationship-1">
+                        <input type="radio" name="applicantRelationship" id="applicantRelationship-1" value="no">
+                        No
+                      </label>
+                    </div>
+                    
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <!-- Form Name -->
+                <legend>Child</legend>
+                <!-- Radio buttons -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="childEducation">Is the child enrolled in school?</label>
+                  <div class="col-md-4">
+                    <div class="checkbox">
+                      <label for="childEducation-0">
+                        <input type="radio" name="childEducation" id="childEducation-0" value="yes">
+                        Yes
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label for="childEducation-1">
+                        <input type="radio" name="childEducation" id="childEducation-1" value="no">
+                        No
+                      </label>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="childResidence">Does the child live in NSW?</label>
+                  <div class="col-md-4">
+                    <div class="checkbox">
+                      <label for="childResidence-0">
+                        <input type="radio" name="childResidence" id="childResidence-0" value="yes">
+                        Yes
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label for="childResidence-1">
+                        <input type="radio" name="childResidence" id="childResidence-1" value="no">
+                        No
+                      </label>
+                    </div>
+                    
+                  </div>
+                </div>
+                <!-- Multiple Checkboxes (inline) -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="first_voucher">Child has had a voucher this calendar year</label>
+                  <div class="col-md-4">
+                    <label class="checkbox-inline" for="fist_voucher-0">
+                      <input type="checkbox" name="first_voucher" id="first_voucher-0" value="yes">
+                      Yes
+                    </label>
+                  </div>
+                </div>
+                <!-- Multiple Checkboxes -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="child_has_medicare">Child has medicare</label>
+                  <div class="col-md-4">
+                    <div class="checkbox">
+                      <label for="child_has_medicare-0">
+                        <input type="checkbox" name="child_has_medicare" id="child_has_medicare-0" value="True">
+                        Yes
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="child_dob">Date of Birth</label>
+                  <div class="col-md-4">
+                    <!-- <input id="child_dob" name="child_dob" type="text" placeholder="dd/mm/yyyy" class="form-control input-md" required=""> -->
+                    <input type="text" id="datepicker">
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+            <p>
+              <button id="run_query" class="au-btn">Calculate</button>
+              <span id="result">
+                <p id="result_title"></p>
+              </span>
+            </p>
           </div>
         </div>
       </div>
     </section>
-    <div id="result">
-      <h3 id="result_title">???</h3>
-    </div>
-    
     <button class="au-btn" id="show_debug">Show Debug</button>
-    <section id="debug">
-      <h3>Debug</h3>
-			<pre id="response"></pre>
-    </section>
-</main>
-
-<!-- END MAIN BODY -->
-<!--FOOTER -->
-<footer class="au-footer au-footer--dark au-body au-body--dark" role="contentinfo">
-  <div class="container-fluid">
-    <div class="row">
-      <section class="col-sm-12">
-        <div class="au-footer__end">
-          <p>
-            © NSW Government. Licensed under the <a href="https://github.com/govau/uikit-starter/blob/master/LICENSE" rel="external">MIT license</a>
-          </p>
-        </div>
-      </section>
+    <div id="debug">
+      <h3>Response from Open Fisca</h3>
+      <p><pre id="response"></pre></p>
     </div>
-</footer>
-<script type="text/javascript" src="assets/script.min.js"></script>
-<script type="text/javascript" src="js/query.js"></script>
-</body>
+  </main>
+  <!-- END MAIN BODY -->
+  <!--FOOTER -->
+  <footer class="au-footer au-footer--dark au-body au-body--dark" role="contentinfo">
+    <div class="container-fluid">
+      <div class="row">
+        <section class="col-sm-12">
+          <div class="au-footer__end">
+            <p>
+              © NSW Government. Licensed under the <a href="https://github.com/govau/uikit-starter/blob/master/LICENSE" rel="external">MIT license</a>
+            </p>
+          </div>
+        </section>
+      </div>
+    </footer>
+    <script type="text/javascript" src="assets/script.min.js"></script>
+    <script type="text/javascript" src="js/query.js"></script>
+  </body>
 </html>

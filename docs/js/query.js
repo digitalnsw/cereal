@@ -26,7 +26,8 @@ $( document ).ready(function() {
             "birth": {"ETERNITY": "2014-01-01"},
             "active_kids__child_meets_criteria": {"2019-02": null},
             "active_kids__voucher_amount": {"2019-02": "100"},
-            "has_valid_medicare_card": {"2019-02": child_has_medicare}
+            "has_valid_medicare_card": {"2019-02": child_has_medicare},
+            "active_kids__already_issued_in_calendar_year": {"2019-02": true}
         }
       },
       "families": {

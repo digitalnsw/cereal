@@ -55,7 +55,7 @@ $( document ).ready(function() {
           $('#result_title').text('You are eligible for 1 or more vouchers');
         }
         else {
-          $('#result_title').text("Based on what you're told us, you're not eligible for vouchers this year.");
+          $('#result_title').text("Based on what you've told us, you're not eligible for vouchers this year.");
         }
         $('#result').show();
     }});

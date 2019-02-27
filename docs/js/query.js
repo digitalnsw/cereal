@@ -32,8 +32,15 @@ $( document ).ready(function() {
   };
 
   $("button").click(function(){
-    $.ajax({url: "https://openfisca-nsw-staging.herokuapp.com/calculate", data : data, method: 'POST', success: function(result){
-      console.log(result)
+    $.ajax({
+      url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
+      data : JSON.stringify(data),
+      method: 'POST',
+      contentType: 'application/json',
+      success: function(result){
+      $('#response').text(result);
+        console.log(result)
+
     }});
   });
 });

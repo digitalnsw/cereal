@@ -29,7 +29,7 @@ $( document ).ready(function() {
       contentType: 'application/json',
       success: function(result){
         $("#response").text(JSON.stringify(result, null, '\t'));
-        var eligible = result['persons']['parent1']['active_kids__is_eligible']['2019-02'];
+        var eligible = result['persons']['parent1']['active_kids__is_eligible'][openfisca_this_month()];
         if (eligible) {
           $('#result_title').text('You are eligible for 1 or more vouchers');
         }

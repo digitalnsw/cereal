@@ -27,6 +27,7 @@
   <link rel="icon" href="assets/favicons/favicon.ico">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <link type="text/css" rel="stylesheet" href="assets/css/main.css">
+  <link type="text/css" rel="stylesheet" href="assets/css/styles.css">
 </head>
 <!-- BODY -->
 <!-- GRID-12 -->
@@ -62,7 +63,7 @@
             <p>Children living in NSW can get a $100 voucher to help pay for creative and sports activities.</p>
             <h3>Find out if you're entitled</h3>
 						<div class="col-md-12">
-              <fieldset>
+              <fieldset class="tab">
                 <!-- Form Name -->
                 <legend>Person applying</legend>
                 <!-- Radio buttons -->
@@ -85,7 +86,7 @@
                   </div>
                 </div>
               </fieldset>
-              <fieldset>
+              <fieldset class="tab">
                 <!-- Form Name -->
                 <legend>Is the child:</legend>
                 <!-- Radio buttons -->
@@ -160,6 +161,8 @@
                 </div>
               </fieldset>
 							<p>
+                <button class="au-btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button class="au-btn" id="nextBtn" onclick="nextPrev(1)">Next</button>
 	              <button id="run_query" class="au-btn">Calculate</button>
 								<button class="au-btn" id="show_debug">Show Debug</button>
 	              <span id="result">

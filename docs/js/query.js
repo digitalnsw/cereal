@@ -146,8 +146,7 @@ $( document ).ready(function() {
       return false;
     });
     $( "#goBtn" ).click(function() {
-      all_request_data();
-      return false;
+      all_request_data(); return false;
     });
 
 
@@ -163,8 +162,7 @@ $( document ).ready(function() {
           }
       }
 
-      var query_month = openfisca_this_month();
-      var query_year = openfisca_this_year();
+      var query_month = openfisca_this_month(); var query_year = openfisca_this_year();
       var person1 = all_request_data.persons.person1;
       var val = null;
 
@@ -175,7 +173,6 @@ $( document ).ready(function() {
 
         item.forEach(function(entry) {
             val = $( "input[name='" + entry + "']").val();
-            console.log(entry + ' is ' + val);
             person1[entry] = {[query_month]: val};
             //person1[entry][query_month] = val;
         });

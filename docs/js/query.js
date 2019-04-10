@@ -1,7 +1,4 @@
-
-
 $( document ).ready(function() {
-
   //DATEPICKER
   $( function() {
     $( "#datepicker" ).datepicker({
@@ -195,7 +192,7 @@ $( document ).ready(function() {
           $('#showResults').html("");
           $.each(all_form_data, function(i, item) {
             $('#showResults').append(
-              '<tr><td>' + i + '</td><td>' + result["persons"]["person1"][i][query_month] + '</td></tr>'
+              '<tr><td><small>' + i + '</small></td><td><small>' + result["persons"]["person1"][i][query_month] + '</small></td></tr>'
             );
           });
       }});
@@ -321,7 +318,6 @@ function nextPrev(n) {
   // Otherwise, display the correct tab:
   showTab(currentTab);
 }
-
 
 // function fixStepIndicator(n) {
 //   // This function removes the "active" class of all steps...

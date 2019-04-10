@@ -51,7 +51,7 @@ $( document ).ready(function() {
         $.each(result, function(i, item) {
             $("#allform table").prepend(
               '<tr class="formRow '+ i + '" style="display:none;">' +
-              '<td><label for="'+ i + '">' + i + '</label></td>' +
+              '<td><small><label for="'+ i + '">' + i + '</label></small></td>' +
               '<td><input name="'+ i + '" class="au-text-input calculationsValue" type="text"></td>' +
               '</tr>'
             );
@@ -71,6 +71,13 @@ $( document ).ready(function() {
         "teenage_education_payments__youth_meets_payment_criteria": [
            "birth",
            "is_enrolled_in_school"
+        ],
+        "teenage_education_payments__adult_meets_payment_criteria": [
+          "is_carer",
+          "is_guardian",
+          "is_carer_providing_short_term_placement",
+          "is_respite_carer",
+          "teenage_education_payments__is_family_tax_benefit_recipient_partA_youth15"
         ],
         "will_preparation_eligible_for_free_will_preparation": [
           "is_full_age_pension_recipient",
@@ -123,7 +130,7 @@ $( document ).ready(function() {
         $("#whichpolicy").prepend(
           '<label class="au-control-input '+ i + '">' +
           '<input value="'+ i + '" class="au-control-input__input calculationsCheckbox" type="checkbox" name="calculations">' +
-          '<span class="au-control-input__text">' + i + '</span>' +
+          '<span class="au-control-input__text"><small>' + i + '</small></span>' +
           '</label>'
         );
     });
@@ -177,7 +184,7 @@ $( document ).ready(function() {
         });
 
       });
-      $("pre").html(JSON.stringify(all_request_data, null, '\t'));
+      //$("pre").html(JSON.stringify(all_request_data, null, '\t'));
 
       $.ajax({
         url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
@@ -188,7 +195,7 @@ $( document ).ready(function() {
           $('#showResults').html("");
           $.each(all_form_data, function(i, item) {
             $('#showResults').append(
-              '<p>' + i + ': ' + result["persons"]["person1"][i][query_month] + '</p>'
+              '<tr><td>' + i + '</td><td>' + result["persons"]["person1"][i][query_month] + '</td></tr>'
             );
           });
       }});

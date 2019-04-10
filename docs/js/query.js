@@ -71,6 +71,50 @@ $( document ).ready(function() {
         "teenage_education_payments__youth_meets_payment_criteria": [
            "birth",
            "is_enrolled_in_school"
+        ],
+        "will_preparation_eligible_for_free_will_preparation": [
+          "is_full_age_pension_recipient",
+          "is_veterans_pension_recipient"
+        ],
+        "nsw_seniors_card_person_is_eligible": [
+          "is_permanent_nsw_resident",
+          "nsw_seniors_card_works_under_20hrs",
+          "birth"
+        ],
+        "gold_seniors_opal_person_is_eligible": [
+          "has_nsw_seniors_card",
+          "has_act_seniors_card"
+        ],
+        "national_parks_seniors_person_is_eligible": [
+          "has_any_seniors_card"
+        ],
+        "family_energy_rebate__person_meets_retail_criteria": [
+          "is_nsw_resident",
+          "is_energy_account_holder",
+          "energy_provider_supply_customer",
+          "is_family_tax_benefit_recipient"
+        ],
+        "family_energy_rebate__person_meets_supply_criteria": [
+          "is_nsw_resident",
+          "is_energy_account_holder",
+          "energy_provider_supply_customer",
+          "is_family_tax_benefit_recipient"
+        ],
+        "gas_rebate__person_meets_retail_criteria": [
+          "is_nsw_resident",
+          "is_energy_account_holder",
+          "energy_provider_supply_customer",
+          "energy_bottled_gas_user",
+          "gas_rebate__already_issued_in_financial_year",
+          "has_health_care_card",
+          "has_department_human_services_pensioner_concession_card",
+          "has_department_veteran_affairs_pensioner_concession_card",
+          "has_department_veteran_affairs_gold_card"
+        ],
+        "StEPS__child_meets_criteria": [
+          "StEPS__already_screened",
+          "StEPS__child_is_joining_school",
+          "birth"
         ]
     }
 

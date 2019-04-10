@@ -19,7 +19,7 @@ $( document ).ready(function() {
     var data = request_data();
 
     // $("#request").text(JSON.stringify(data, null, '\t'));
-    
+
     $('#response,#result_title').text('Asking Rules as Code to calculate....');
 
     $.ajax({
@@ -39,7 +39,127 @@ $( document ).ready(function() {
         $('#result').show();
     }});
   });
+
+
+  if( $('#allform').length ){
+    $.ajax({
+      url: "https://openfisca-nsw-staging.herokuapp.com/variables",
+      method: 'GET',
+      contentType: 'application/json',
+      success: function(result){
+        //$("#allform pre").text(JSON.stringify(result, null, '\t'));
+        $.each(result, function(i, item) {
+            $("#allform table").prepend(
+              '<tr class="formRow '+ i + '" style="display:none;">' +
+              '<td><label for="'+ i + '">' + i + '</label></td>' +
+              '<td><input name="'+ i + '" class="au-text-input calculationsValue" type="text"></td>' +
+              '</tr>'
+            );
+        });
+      }
+    });
+
+    var all_form_data = {
+        "NRMA_free2go__is_eligible": [
+           "birth",
+           "is_nsw_resident",
+           "is_act_resident",
+           "NRMA_free2go__is_NRMA_member",
+           "is_australian_citizen",
+           "is_permanent_resident"
+        ],
+        "teenage_education_payments__youth_meets_payment_criteria": [
+           "birth",
+           "is_enrolled_in_school"
+        ]
+    }
+
+
+    $.each(all_form_data, function(i, item) {
+        $("#whichpolicy").prepend(
+          '<label class="au-control-input '+ i + '">' +
+          '<input value="'+ i + '" class="au-control-input__input calculationsCheckbox" type="checkbox" name="calculations">' +
+          '<span class="au-control-input__text">' + i + '</span>' +
+          '</label>'
+        );
+    });
+
+    $( ".calculationsCheckbox" ).click(function() {
+      //alert(all_form_data[$(this).val()]);
+      $.each(all_form_data[$(this).val()], function(i, item) {
+        $("tr."+item).show();
+      });
+    });
+
+
+    $( "#clearBtn" ).click(function() {
+      $(".formRow").hide();
+      $( ".calculationsCheckbox" ).prop( "checked", false );
+      return false;
+    });
+    $( "#goBtn" ).click(function() {
+      all_request_data();
+      return false;
+    });
+
+
+    all_request_data = function() {
+      var all_request_data = {
+          "persons": {
+             "person1":{}
+          },
+          "families": {
+              "family1": {
+                  "parents": ["person1"],
+              }
+          }
+      }
+
+      var query_month = openfisca_this_month();
+      var query_year = openfisca_this_year();
+      var person1 = all_request_data.persons.person1;
+      var val = null;
+
+      $.each(all_form_data, function(i, item) {
+        //add the calculations we want responses for to the person object
+        person1[i] = {[query_month]: null};
+        thisparent = i;
+
+        item.forEach(function(entry) {
+            val = $( "input[name='" + entry + "']").val();
+            console.log(entry + ' is ' + val);
+            person1[entry] = {[query_month]: val};
+            //person1[entry][query_month] = val;
+        });
+
+      });
+      $("pre").html(JSON.stringify(all_request_data, null, '\t'));
+
+      $.ajax({
+        url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
+        data : JSON.stringify(all_request_data),
+        method: 'POST',
+        contentType: 'application/json',
+        success: function(result){
+          $('#showResults').html("");
+          $.each(all_form_data, function(i, item) {
+            $('#showResults').append(
+              '<p>' + i + ': ' + result["persons"]["person1"][i][query_month] + '</p>'
+            );
+          });
+      }});
+
+
+
+      return all_request_data;
+
+    }
+
+  }
+
+
 });
+
 
 request_data = function() {
   var request_data = {
@@ -65,7 +185,7 @@ request_data = function() {
               "children": ["child1"]
           }
       }
-    
+
   }
 
   var query_month = openfisca_this_month();
@@ -81,7 +201,7 @@ request_data = function() {
   child1.has_valid_medicare_card[query_month] = $('#child_has_medicare-0').is(':checked');
   // (note this variable is set for the whole year)
   child1.active_kids__already_issued_in_calendar_year[query_year] = $('#first_voucher-0').is(':checked');
-  
+
   // The output we want from Open Fisca
   parent1.active_kids__is_eligible[query_month] = null;
   child1.age[query_month] = null;

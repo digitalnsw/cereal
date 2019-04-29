@@ -14,9 +14,6 @@ $( document ).ready(function() {
 
   $("#run_query").click(function(){
     var data = request_data();
-
-    // $("#request").text(JSON.stringify(data, null, '\t'));
-
     $('#response,#result_title').text('Asking Rules as Code to calculate....');
 
     $.ajax({
@@ -161,7 +158,6 @@ $( document ).ready(function() {
     });
 
     $( ".calculationsCheckbox" ).click(function() {
-      //alert(all_form_data[$(this).val()]);
       $.each(all_form_data[$(this).val()], function(i, item) {
         $("tr."+item).show();
       });
@@ -202,11 +198,9 @@ $( document ).ready(function() {
         item.forEach(function(entry) {
             val = $( "input[name='" + entry + "']").val();
             person1[entry] = {[query_month]: val};
-            //person1[entry][query_month] = val;
         });
 
       });
-      //$("pre").html(JSON.stringify(all_request_data, null, '\t'));
 
       $.ajax({
         url: "https://openfisca-nsw-dev.herokuapp.com/calculate",
@@ -343,13 +337,3 @@ function nextPrev(n) {
   // Otherwise, display the correct tab:
   showTab(currentTab);
 }
-
-// function fixStepIndicator(n) {
-//   // This function removes the "active" class of all steps...
-//   var i, x = document.getElementsByClassName("step");
-//   for (i = 0; i < x.length; i++) {
-//     x[i].className = x[i].className.replace(" active", "");
-//   }
-//   //... and adds the "active" class to the current step:
-//   x[n].className += " active";
-// }

@@ -20,7 +20,7 @@ $( document ).ready(function() {
     $('#response,#result_title').text('Asking Rules as Code to calculate....');
 
     $.ajax({
-      url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
+      url: "https://openfisca-nsw-dev.herokuapp.com/calculate",
       data : JSON.stringify(data),
       method: 'POST',
       contentType: 'application/json',
@@ -40,7 +40,7 @@ $( document ).ready(function() {
 
   if( $('#allform').length ){
     $.ajax({
-      url: "https://openfisca-nsw-staging.herokuapp.com/variables",
+      url: "https://openfisca-nsw-dev.herokuapp.com/variables",
       method: 'GET',
       contentType: 'application/json',
       success: function(result){
@@ -119,6 +119,34 @@ $( document ).ready(function() {
           "StEPS__already_screened",
           "StEPS__child_is_joining_school",
           "birth"
+        ],
+        "art_union__game_meets_criteria": [
+          "total_prize_value_of_all_prizes_from_gaming_activity",
+          "gross_proceeds_from_gaming_activity",
+          "is_art_union",
+          "proceeds_to_benefitting_organisation"
+        ],
+        "draw_lottery__game_meets_criteria": [
+          "gross_proceeds_from_gaming_activity",
+          "proceeds_to_benefitting_organisation",
+          "total_prize_value_of_all_prizes_from_gaming_activity",
+          "is_not_for_profit",
+          "is_charity"
+        ],
+        "guessing_competition__game_meets_criteria": [
+          "is_charity",
+          "is_not_for_profit",
+          "total_prize_value_of_all_prizes_from_gaming_activity",
+          "proceeds_to_benefitting_organisation",
+          "gross_proceeds_from_gaming_activity"
+        ],
+        "no_draw_lottery__game_meets_criteria": [
+          "is_charity",
+          "is_not_for_profit",
+          "total_prize_value_of_all_prizes_from_gaming_activity",
+          "proceeds_to_benefitting_organisation",
+          "gross_proceeds_from_gaming_activity",
+          "number_of_tickets"
         ]
     }
 
@@ -181,7 +209,7 @@ $( document ).ready(function() {
       //$("pre").html(JSON.stringify(all_request_data, null, '\t'));
 
       $.ajax({
-        url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
+        url: "https://openfisca-nsw-dev.herokuapp.com/calculate",
         data : JSON.stringify(all_request_data),
         method: 'POST',
         contentType: 'application/json',

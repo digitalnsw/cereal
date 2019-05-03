@@ -17,7 +17,7 @@ $( document ).ready(function() {
     $('#response,#result_title').text('Asking Rules as Code to calculate....');
 
     $.ajax({
-      url: "https://openfisca-nsw-staging.herokuapp.com/calculate",
+      url: "https://openfisca-nsw-dev.herokuapp.com/calculate",
       data : JSON.stringify(data),
       method: 'POST',
       contentType: 'application/json',
@@ -35,7 +35,7 @@ $( document ).ready(function() {
   });
 
 
-  
+
 
 
 });

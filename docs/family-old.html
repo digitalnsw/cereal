@@ -45,7 +45,7 @@
           <a class="au-header__brand" href="#">
             <img class="au-header__brand-image" alt="NSW Government" src="assets/img/nsw_white.png" width="90">
             <div class="au-header__text">
-              <h2 class="au-header__heading">Codified rules tester<span class="header__badge">demo</span></h2>
+							<h2 class="au-header__heading">Codified rules tester<span class="header__badge">demo</span></h2>
               <div class="au-header__subline">A way to test Openfisca API responses</div>
             </div>
           </a>
@@ -59,22 +59,35 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12" id="content">
-            <h1>Test a policy in the openfisca-nsw API</h1>
-						<p>This is a platform to to build and pass a data object to openfisca, and receive a result.</p>
-						<p>This demo service works with specific rulesets, which have had forms built for them, and uses the dev environment.</p>
-						<p>Please choose a ruleset to test.</p>
-						<ul>
-							<li><a href="active-kids.html">Active kids &amp; Creative kids</a></li>
-							<li><a href="family-rebates.html">Family entitlements calculator</a></li>
-							<li><a href="community-lotteries.html">Community gaming regulation</a></li>
-						</ul>
-						<p>View the environment: </p>
-						<ul>
-							<li><a href="https://openfisca-nsw-dev.herokuapp.com/spec">API (json)</a></li>
-							<li><a href="https://nsw-rules-dev.herokuapp.com/">Rules explorer</a></li>
-							<li><a href="https://nsw-rules-dev.herokuapp.com/swagger">Swagger docs</a></li>
-						</ul>
+            <h1>Test any policy</h1>
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-8">
+									<div id="allform">
+										<table></table>
+										<pre id="package"></pre>
+									</div>
+								</div>
+								<div class="col-sm-4">
+		              <form id="whichpolicy">
+										<hr>
+										<button class="au-btn" id="goBtn">
+										  Go
+										</button>
+										<button class="au-btn" id="clearBtn">
+										  Clear fields
+										</button>
+									</form>
+									<hr>
+									<table id="showResults"></table>
+								</div>
+							</div>
+						</div>
           </div>
+			    <div id="debug">
+			      <h3>Response from Open Fisca</h3>
+			      <p><pre id="response"></pre></p>
+			    </div>
         </div>
       </div>
     </section>
@@ -94,6 +107,7 @@
       </div>
     </footer>
     <script type="text/javascript" src="assets/script.min.js"></script>
-    <script type="text/javascript" src="js/query.js"></script>
+		<script type="text/javascript" src="js/query.js"></script>
+		<script type="text/javascript" src="js/all.js"></script>
   </body>
 </html>

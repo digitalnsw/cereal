@@ -15,7 +15,7 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Security-Policy" content="font-src; connect-src 'self' https://openfisca-nsw-dev.herokuapp.com; style-src https://ajax.googleapis.com/ 'self' 'unsafe-inline'; script-src https://code.jquery.com/  https://ajax.googleapis.com/ 'self' 'unsafe-eval' 'unsafe-inline'; default-src 'none'; img-src data: https://ajax.googleapis.com/ 'self'; child-src; base-uri; form-action 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width">
-  <title>Cost of Living &amp; Rules as Code demo</title>
+  <title>Rules as Code tester (dev)</title>
   <script type="text/javascript">
     var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
   </script>
@@ -59,13 +59,13 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12" id="content">
-            <h1>Test any policy</h1>
+            <h1>Test community gaming regulation<br><br></h1>
 						<div class="container">
 							<div class="row">
 								<div class="col-sm-8">
-									<div id="allform">
+									<div id="inputform">
 										<table></table>
-										<pre></pre>
+										<pre id="package"></pre>
 									</div>
 								</div>
 								<div class="col-sm-4">
@@ -106,8 +106,7 @@
         </section>
       </div>
     </footer>
-    <script type="text/javascript" src="assets/script.min.js"></script>
-		<script type="text/javascript" src="js/query.js"></script>
-		<script type="text/javascript" src="js/all.js"></script>
+		<script type="text/javascript" src="js/generic.js"></script>
+		<script type="text/javascript" src="js/lotteries.js"></script>
   </body>
 </html>

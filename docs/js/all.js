@@ -78,34 +78,6 @@ if( $('#allform').length ){
         "StEPS__already_screened",
         "StEPS__child_is_joining_school",
         "birth"
-      ],
-      "art_union__game_meets_criteria": [
-        "total_prize_value_of_all_prizes_from_gaming_activity",
-        "gross_proceeds_from_gaming_activity",
-        "is_art_union",
-        "proceeds_to_benefitting_organisation"
-      ],
-      "draw_lottery__game_meets_criteria": [
-        "gross_proceeds_from_gaming_activity",
-        "proceeds_to_benefitting_organisation",
-        "total_prize_value_of_all_prizes_from_gaming_activity",
-        "is_not_for_profit",
-        "is_charity"
-      ],
-      "guessing_competition__game_meets_criteria": [
-        "is_charity",
-        "is_not_for_profit",
-        "total_prize_value_of_all_prizes_from_gaming_activity",
-        "proceeds_to_benefitting_organisation",
-        "gross_proceeds_from_gaming_activity"
-      ],
-      "no_draw_lottery__game_meets_criteria": [
-        "is_charity",
-        "is_not_for_profit",
-        "total_prize_value_of_all_prizes_from_gaming_activity",
-        "proceeds_to_benefitting_organisation",
-        "gross_proceeds_from_gaming_activity",
-        "number_of_tickets"
       ]
   }
 
@@ -143,12 +115,7 @@ if( $('#allform').length ){
         },
         "families": {
             "family1": {
-                "parents": ["person1"],
-            }
-        },
-        "organisations": {
-            "org1": {
-                "representatives": ["person1"],
+                "parents": ["person1"]
             }
         }
     }
@@ -168,7 +135,7 @@ if( $('#allform').length ){
         });
       }
     });
-    //("pre").html(JSON.stringify(all_request_data, null, '\t'));
+    $("#package").html(JSON.stringify(all_request_data, null, '\t'));
 
     $.ajax({
       url: "https://openfisca-nsw-dev.herokuapp.com/calculate",
@@ -176,10 +143,14 @@ if( $('#allform').length ){
       method: 'POST',
       contentType: 'application/json',
       success: function(result){
-        $('#showResults').html("");
-        $.each(all_form_data, function(i, item) {
+        $('#showResults').html("<tr><td colspan='2'>"+JSON.stringify(result, null, '\t')+"</td></tr>");
+        $('#showResults').html("<tr><td colspan='2'>"+JSON.stringify(all_request_data, null, '\t')+"</td></tr>");
+        var requestedResult = all_form_data["persons"]["person1"];
+        var personResult = result["persons"]["person1"];
+        $.each(requestedResult, function(i, item) {
+          alert(i);
           $('#showResults').append(
-            '<tr><td><small>' + i + '</small></td><td><small>' + result["persons"]["person1"][i][query_month] + '</small></td></tr>'
+            '<tr><td><small>' + i + '</small></td><td><small>' + personResult[i][query_month] + '</small></td></tr>'
           );
         });
     }});

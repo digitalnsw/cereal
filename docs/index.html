@@ -13,9 +13,9 @@
 <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="font-src; connect-src 'self' https://openfisca-nsw-staging.herokuapp.com; style-src https://ajax.googleapis.com/ 'self' 'unsafe-inline'; script-src https://code.jquery.com/  https://ajax.googleapis.com/ 'self' 'unsafe-eval' 'unsafe-inline'; default-src 'none'; img-src data: https://ajax.googleapis.com/ 'self'; child-src; base-uri; form-action 'self'; object-src 'none';">
+  <meta http-equiv="Content-Security-Policy" content="font-src; connect-src 'self' https://openfisca-nsw-dev.herokuapp.com; style-src https://ajax.googleapis.com/ 'self' 'unsafe-inline'; script-src https://code.jquery.com/  https://ajax.googleapis.com/ 'self' 'unsafe-eval' 'unsafe-inline'; default-src 'none'; img-src data: https://ajax.googleapis.com/ 'self'; child-src; base-uri; form-action 'self'; object-src 'none';">
   <meta name="viewport" content="width=device-width">
-  <title>Cost of Living &amp; Rules as Code demo</title>
+	<title>Rules as Code tester (dev)</title>
   <script type="text/javascript">
     var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
   </script>
@@ -60,19 +60,21 @@
         <div class="row">
           <div class="col-sm-12" id="content">
             <h1>Test a policy in the openfisca-nsw API</h1>
-						<p>This is a testing platform to demonstrate an HTML and JavaScript based way to build and pass a data object to openfisca, and receive a result.</p>
-						<p>This demo service works with specific policies, which have had forms built for them.</p>
-            <p>Please choose a policy to test.</p>
+						<p>This is a platform to to build and pass a data object to openfisca, and receive a result.</p>
+						<p>This demo service works with specific rulesets, which have had forms built for them, and uses the dev environment.</p>
+						<p>Please choose a ruleset to test.</p>
 						<ul>
 							<li><a href="active-kids.html">Active kids &amp; Creative kids</a></li>
-							<li><a href="nrma-free2go.html">NRMA Free2go</a></li>
-							<li><a href="all.html">Everything</a></li>
+							<li><a href="family-rebates.html">Family entitlements calculator</a></li>
+							<li><a href="community-lotteries.html">Community gaming regulation</a></li>
+						</ul>
+						<p>View the environment: </p>
+						<ul>
+							<li><a href="https://openfisca-nsw-dev.herokuapp.com/spec">API (json)</a></li>
+							<li><a href="https://nsw-rules-dev.herokuapp.com/">Rules explorer</a></li>
+							<li><a href="https://nsw-rules-dev.herokuapp.com/swagger">Swagger docs</a></li>
 						</ul>
           </div>
-			    <div id="debug">
-			      <h3>Response from Open Fisca</h3>
-			      <p><pre id="response"></pre></p>
-			    </div>
         </div>
       </div>
     </section>

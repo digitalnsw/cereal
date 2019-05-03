@@ -15,4 +15,8 @@ openfisca_this_year = function() {
   return new Date().getFullYear();
 }
 
-$('#debug').hide();
+
+
+$( document ).ready(function() {
+  $('#debug').hide();
+});

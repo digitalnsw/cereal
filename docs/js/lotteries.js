@@ -71,10 +71,14 @@ if( $('#inputform').length ){
       );
   });
 
-  $( ".calculationsCheckbox" ).click(function() {
-    $.each(all_form_data[$(this).val()], function(i, item) {
-      $("tr."+item).show();
+  $( ".calculationsCheckbox" ).change(function() {
+    $(".formRow").hide();
+    $(".calculationsCheckbox:checked").each(function () {
+      $.each(all_form_data[$(this).val()], function(i, item) {
+        $("tr."+item).show();
+      });
     });
+    $("input[name=birth]").attr("placeholder", "YYYY-MM-DD");
   });
 
 

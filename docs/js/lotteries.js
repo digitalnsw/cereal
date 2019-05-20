@@ -26,6 +26,17 @@ var all_form_data = {
       "proceeds_to_benefitting_organisation",
       "gross_proceeds_from_gaming_activity",
       "number_of_tickets"
+    ],
+    "single_permit_fee": [
+      "total_prize_value_of_all_prizes_from_gaming_activity",
+      "online_application_lodgement",
+      "single_permit"
+    ],
+    "multiple_permit_fee": [
+      "total_prize_value_of_all_prizes_from_gaming_activity",
+      "online_application_lodgement",
+      "single_permit",
+      "highest_value_of_individual_prize_in_gaming_activity"
     ]
 }
 var request_data_structure = {

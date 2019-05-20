@@ -37,6 +37,13 @@ var all_form_data = {
       "online_application_lodgement",
       "single_permit",
       "highest_value_of_individual_prize_in_gaming_activity"
+    ],
+    "trade_promotion__game_meets_criteria": [
+      "is_for_profit_business",
+      "gaming_activity_is_free_to_enter",
+      "trade_promotion__has_business_principal_consent",
+      "total_prize_value_of_all_prizes_from_gaming_activity",
+      "total_prize_value_of_all_prizes_from_single_gaming_session"
     ]
 }
 var request_data_structure = {
